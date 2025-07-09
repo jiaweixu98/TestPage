@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "The Second Workshop on GenAI for Health: Potential, Trust, and Policy Compliance - NeurIPS 2025",
   "private": true,
-  "homepage": ".",
+  "homepage": "https://jiaweixu98.github.io/TestPage",
   "keywords": [
     "genai",
     "health",
@@ -43,7 +43,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-react": "^7.34.0",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "gh-pages": "^6.1.0",
+    "gh-pages": "^6.3.0",
     "prettier": "^3.2.5"
   },
   "scripts": {

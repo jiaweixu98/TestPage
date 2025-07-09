@@ -130,7 +130,7 @@ function NavigationBar({ isActive }) {
         >
           <img 
             alt="NeurIPS Logo" 
-            src="/data/images/logo/neurips-navbar-logo.svg" 
+            src={process.env.PUBLIC_URL + '/data/images/logo/neurips-navbar-logo.svg'} 
           />
         </a>
         
@@ -236,7 +236,7 @@ function SpeakersSection() {
       name: "Suchi Saria",
       institution: "Johns Hopkins University",
       link: "https://www.cs.jhu.edu/~saria/",
-      image: "/data/images/speakers/suchi-saria-2.jpg",
+      image: process.env.PUBLIC_URL + "/data/images/speakers/suchi-saria-2.jpg",
       category: "Policy, Regulation, and Compliance",
       keynote: { 
         title: "AI for Individualized Care", 
@@ -249,7 +249,7 @@ function SpeakersSection() {
       name: "Eric Topol",
       institution: "Scripps Research",
       link: "https://www.scripps.edu/faculty/topol/",
-      image: "/data/images/speakers/eric_topol.jpg",
+      image: process.env.PUBLIC_URL + "/data/images/speakers/eric_topol.jpg",
       category: "Policy, Regulation, and Compliance",
       keynote: { 
         title: "Digital and Personalized Medicine", 
@@ -262,7 +262,7 @@ function SpeakersSection() {
       name: "Fei Wang",
       institution: "Weill Cornell Medicine",
       link: "https://vivo.weill.cornell.edu/display/cwid-few2001",
-      image: "/data/images/speakers/FeiWang_1.jpeg",
+      image: process.env.PUBLIC_URL + "/data/images/speakers/FeiWang_1.jpeg",
       category: "Policy, Regulation, and Compliance",
       keynote: { 
         title: "AI for Digital Health", 
@@ -275,7 +275,7 @@ function SpeakersSection() {
       name: "Haider Warraich",
       institution: "ARPA-H",
       link: "https://www.linkedin.com/in/haider-warraich-md-8b4b5b1/",
-      image: "/data/images/speakers/Haider_WarraichMD.jpg",
+      image: process.env.PUBLIC_URL + "/data/images/speakers/Haider_WarraichMD.jpg",
       category: "Policy, Regulation, and Compliance",
       keynote: { 
         title: "AI and Health Tech Policy", 
@@ -289,7 +289,7 @@ function SpeakersSection() {
       name: "James Zou",
       institution: "Stanford University",
       link: "https://web.stanford.edu/~jameszou/",
-      image: "/data/images/speakers/zou.jpg",
+      image: process.env.PUBLIC_URL + "/data/images/speakers/zou.jpg",
       category: "GenAI Use Cases for Health",
       keynote: { 
         title: "AI Reliability for Health Applications", 
@@ -302,7 +302,7 @@ function SpeakersSection() {
       name: "Vivek Natarajan",
       institution: "Google",
       link: "https://www.linkedin.com/in/vivek-natarajan-1a2b3c4d/",
-      image: "/data/images/speakers/vivek.jpg",
+      image: process.env.PUBLIC_URL + "/data/images/speakers/vivek.jpg",
       category: "GenAI Use Cases for Health",
       keynote: { 
         title: "Med-PaLM and Project AMIE", 
@@ -315,7 +315,7 @@ function SpeakersSection() {
       name: "Brian Kim",
       institution: "Stanford University",
       link: "https://www.linkedin.com/in/brian-kim-robotics/",
-      image: "/data/images/speakers/brian.jpg",
+      image: process.env.PUBLIC_URL + "/data/images/speakers/brian.jpg",
       category: "GenAI Use Cases for Health",
       keynote: { 
         title: "AI-Driven Autonomous Surgical Workflows", 
@@ -328,7 +328,7 @@ function SpeakersSection() {
       name: "Serena Yeung",
       institution: "Stanford University",
       link: "https://ai.stanford.edu/~syyeung/",
-      image: "/data/images/speakers/yeung.jpg",
+      image: process.env.PUBLIC_URL + "/data/images/speakers/yeung.jpg",
       category: "GenAI Use Cases for Health",
       keynote: { 
         title: "Medical AI and Computer Vision", 
@@ -342,7 +342,7 @@ function SpeakersSection() {
       name: "Marzyeh Ghassemi",
       institution: "MIT",
       link: "https://healthyml.org/marzyeh/",
-      image: "/data/images/speakers/MarzyehGhassemi.jpeg",
+      image: process.env.PUBLIC_URL + "/data/images/speakers/MarzyehGhassemi.jpeg",
       category: "GenAI Trustworthiness and Risks in Health",
       keynote: { 
         title: "AI's Clinical Risks", 
@@ -355,7 +355,7 @@ function SpeakersSection() {
       name: "Sharon Yixuan Li",
       institution: "UW-Madison",
       link: "https://pages.cs.wisc.edu/~sharonli/",
-      image: "/data/images/speakers/yixuanli-2019.jpg",
+      image: process.env.PUBLIC_URL + "/data/images/speakers/yixuanli-2019.jpg",
       category: "GenAI Trustworthiness and Risks in Health",
       keynote: { 
         title: "Safe AI Algorithms for Healthcare", 
@@ -368,7 +368,7 @@ function SpeakersSection() {
       name: "Munjal Shah",
       institution: "Hippocratic AI",
       link: "https://www.linkedin.com/in/munjalshah/",
-      image: "/data/images/speakers/Munjal Shah_highrez.jpg",
+      image: process.env.PUBLIC_URL + "/data/images/speakers/Munjal Shah_highrez.jpg",
       category: "GenAI Trustworthiness and Risks in Health",
       keynote: { 
         title: "Safety-Focused LLMs for Healthcare", 
@@ -381,7 +381,7 @@ function SpeakersSection() {
       name: "Jimeng Sun",
       institution: "UIUC",
       link: "https://sunlab.org/",
-      image: "/data/images/speakers/jimengsun.jpg",
+      image: process.env.PUBLIC_URL + "/data/images/speakers/jimengsun.jpg",
       category: "GenAI Trustworthiness and Risks in Health",
       keynote: { 
         title: "AI for Clinical Trials and Drug Discovery", 
@@ -664,67 +664,67 @@ function OrganizersSection() {
       name: "Jiawei Xu",
       institution: "UT Austin",
       link: "https://www.linkedin.com/in/jiawei-xu-ut/",
-      image: "/data/images/organizers/jiaweixu.jpg"
+      image: process.env.PUBLIC_URL + "/data/images/organizers/jiaweixu.jpg"
     },
     {
       name: "Tiange Xiang",
       institution: "Stanford University",
       link: "https://www.linkedin.com/in/tiange-xiang/",
-      image: "/data/images/organizers/tiange.jpg"
+      image: process.env.PUBLIC_URL + "/data/images/organizers/tiange.jpg"
     },
     {
       name: "Pranav Rajpurkar",
       institution: "Harvard University",
       link: "https://rajpurkar.github.io/",
-      image: "/data/images/organizers/PranavRajpurkar_1.jpeg"
+      image: process.env.PUBLIC_URL + "/data/images/organizers/PranavRajpurkar_1.jpeg"
     },
     {
       name: "Junyuan Hong",
       institution: "UT Austin",
       link: "https://www.linkedin.com/in/junyuan-hong/",
-      image: "/data/images/organizers/junyuan.jpg"
+      image: process.env.PUBLIC_URL + "/data/images/organizers/junyuan.jpg"
     },
     {
       name: "Changan Chen",
       institution: "Stanford University",
       link: "https://www.linkedin.com/in/changan-chen/",
-      image: "/data/images/organizers/changan.jpg"
+      image: process.env.PUBLIC_URL + "/data/images/organizers/changan.jpg"
     },
     {
       name: "Ehsan Adeli",
       institution: "Stanford University",
       link: "https://profiles.stanford.edu/ehsan-adeli",
-      image: "/data/images/organizers/ehsan.jpg"
+      image: process.env.PUBLIC_URL + "/data/images/organizers/ehsan.jpg"
     },
     {
       name: "Xiaoxiao Li",
       institution: "University of British Columbia",
       link: "https://www.ece.ubc.ca/~xiaoxiaoli/",
-      image: "/data/images/organizers/xiaoxiao.jpg"
+      image: process.env.PUBLIC_URL + "/data/images/organizers/xiaoxiao.jpg"
     },
     {
       name: "Georgios Pavlakos",
       institution: "UT Austin",
       link: "https://geopavlakos.github.io/",
-      image: "/data/images/organizers/georgios_pavlakos_res.jpg"
+      image: process.env.PUBLIC_URL + "/data/images/organizers/georgios_pavlakos_res.jpg"
     },
     {
       name: "Scott Delp",
       institution: "Stanford University",
       link: "https://profiles.stanford.edu/scott-delp",
-      image: "/data/images/organizers/scott.png"
+      image: process.env.PUBLIC_URL + "/data/images/organizers/scott.png"
     },
     {
       name: "Fei-Fei Li",
       institution: "Stanford University",
       link: "https://profiles.stanford.edu/fei-fei-li",
-      image: "/data/images/organizers/feifei.png"
+      image: process.env.PUBLIC_URL + "/data/images/organizers/feifei.png"
     },
     {
       name: "Ying Ding",
       institution: "UT Austin",
       link: "https://yingding.ischool.utexas.edu/",
-      image: "/data/images/organizers/YingDing.jpg"
+      image: process.env.PUBLIC_URL + "/data/images/organizers/YingDing.jpg"
     }
   ], []);
 
@@ -793,7 +793,7 @@ function Footer() {
             >
               <img 
                 alt="NeurIPS Logo" 
-                src="/data/images/logo/neurips-navbar-logo.svg" 
+                src={process.env.PUBLIC_URL + '/data/images/logo/neurips-navbar-logo.svg'} 
               />
             </a>
           </div>
