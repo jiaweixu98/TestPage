@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "The Second Workshop on GenAI for Health: Potential, Trust, and Policy Compliance - NeurIPS 2025",
   "private": true,
-  "homepage": "https://jiaweixu98.github.io/TestPage",
+  "homepage": ".",
   "keywords": [
     "genai",
     "health",

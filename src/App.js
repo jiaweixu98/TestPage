@@ -14,7 +14,7 @@ import CoffeeIcon from '@mui/icons-material/Coffee';
 import GroupsIcon from '@mui/icons-material/Groups';
 
 // Initialize Google Analytics
-ReactGA.initialize('G-0000000000');
+ReactGA.initialize('G-D2BRX1PQJQ');
 
 // Custom hooks for better state management
 const useScrollPosition = () => {
@@ -102,6 +102,7 @@ function App() {
 // Navigation Component with improved accessibility
 function NavigationBar({ isActive }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("Home");
   
   const navItems = [
     { id: "home", label: "Home", to: "Home" },
@@ -118,6 +119,11 @@ function NavigationBar({ isActive }) {
 
   const closeMenu = useCallback(() => {
     setIsMenuOpen(false);
+  }, []);
+
+  // Set Home as active by default when component mounts
+  useEffect(() => {
+    setActiveSection("Home");
   }, []);
 
   return (
@@ -157,9 +163,13 @@ function NavigationBar({ isActive }) {
                 smooth={true}
                 offset={-80}
                 duration={300}
-                className="nav-link"
+                className={`nav-link ${activeSection === item.to ? 'active' : ''}`}
                 activeClass="active"
-                onClick={closeMenu}
+                onClick={() => {
+                  setActiveSection(item.to);
+                  closeMenu();
+                }}
+                onSetActive={() => setActiveSection(item.to)}
                 role="menuitem"
                 aria-label={`Navigate to ${item.label} section`}
               >
@@ -180,8 +190,21 @@ function HomeSection() {
     rootMargin: '0px 0px -50px 0px'
   });
 
+  const backgroundImageUrl = process.env.PUBLIC_URL + '/data/images/bg/bg.png';
+
   return (
-    <section className="home-section" ref={ref}>
+    <section 
+      className="home-section" 
+      ref={ref}
+      style={{
+        backgroundImage: `linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${backgroundImageUrl})`,
+        backgroundColor: '#1a1a1a',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'scroll'
+      }}
+    >
       <div className={`home-content ${isVisible ? 'animate-in' : ''}`}>
         <h1 className="home-title">
           The Second Workshop on GenAI for Health:<br />
@@ -197,8 +220,8 @@ function HomeSection() {
           >
             @NeurIPS 2025
           </a>
-          <p className="home-location">San Diego, California, USA</p>
-          <p className="home-date">December 7, 2025</p>
+          <p className="home-location">San Diego Convention Center, California, USA</p>
+          <p className="home-date">December 6 or 7, 2025</p>
         </div>
         
         <div className="home-actions">
@@ -235,7 +258,7 @@ function SpeakersSection() {
       id: "suchi-saria",
       name: "Suchi Saria",
       institution: "Johns Hopkins University",
-      link: "https://www.cs.jhu.edu/~saria/",
+      link: "https://engineering.jhu.edu/faculty/suchi-saria/",
       image: process.env.PUBLIC_URL + "/data/images/speakers/suchi-saria-2.jpg",
       category: "Policy, Regulation, and Compliance",
       keynote: { 
@@ -261,7 +284,7 @@ function SpeakersSection() {
       id: "fei-wang",
       name: "Fei Wang",
       institution: "Weill Cornell Medicine",
-      link: "https://vivo.weill.cornell.edu/display/cwid-few2001",
+      link: "https://wcm-wanglab.github.io/",
       image: process.env.PUBLIC_URL + "/data/images/speakers/FeiWang_1.jpeg",
       category: "Policy, Regulation, and Compliance",
       keynote: { 
@@ -274,7 +297,7 @@ function SpeakersSection() {
       id: "haider-warraich",
       name: "Haider Warraich",
       institution: "ARPA-H",
-      link: "https://www.linkedin.com/in/haider-warraich-md-8b4b5b1/",
+      link: "https://www.linkedin.com/in/haiderwarraich/",
       image: process.env.PUBLIC_URL + "/data/images/speakers/Haider_WarraichMD.jpg",
       category: "Policy, Regulation, and Compliance",
       keynote: { 
@@ -288,7 +311,7 @@ function SpeakersSection() {
       id: "james-zou",
       name: "James Zou",
       institution: "Stanford University",
-      link: "https://web.stanford.edu/~jameszou/",
+      link: "https://www.james-zou.com/",
       image: process.env.PUBLIC_URL + "/data/images/speakers/zou.jpg",
       category: "GenAI Use Cases for Health",
       keynote: { 
@@ -301,7 +324,7 @@ function SpeakersSection() {
       id: "vivek-natarajan",
       name: "Vivek Natarajan",
       institution: "Google",
-      link: "https://www.linkedin.com/in/vivek-natarajan-1a2b3c4d/",
+      link: "https://www.linkedin.com/in/vivek-natarajan-a3670118/",
       image: process.env.PUBLIC_URL + "/data/images/speakers/vivek.jpg",
       category: "GenAI Use Cases for Health",
       keynote: { 
@@ -314,7 +337,7 @@ function SpeakersSection() {
       id: "brian-kim",
       name: "Brian Kim",
       institution: "Stanford University",
-      link: "https://www.linkedin.com/in/brian-kim-robotics/",
+      link: "https://profiles.stanford.edu/juyong-kim",
       image: process.env.PUBLIC_URL + "/data/images/speakers/brian.jpg",
       category: "GenAI Use Cases for Health",
       keynote: { 
@@ -367,7 +390,7 @@ function SpeakersSection() {
       id: "munjal-shah",
       name: "Munjal Shah",
       institution: "Hippocratic AI",
-      link: "https://www.linkedin.com/in/munjalshah/",
+      link: "https://www.hippocraticai.com/munjal-shah",
       image: process.env.PUBLIC_URL + "/data/images/speakers/Munjal Shah_highrez.jpg",
       category: "GenAI Trustworthiness and Risks in Health",
       keynote: { 
@@ -476,26 +499,24 @@ function KeynoteModal({ speaker, isOpen, onClose }) {
         </button>
         
         <header className="modal-header">
-          <h3>Keynote - {speaker.name}</h3>
+          <h3>{speaker.name}</h3>
         </header>
         
         <div className="modal-body">
-          <h4 className="keynote-title">{speaker.keynote.title}</h4>
+          {/* <h4 className="keynote-title">{speaker.keynote.title}</h4> */}
           
-          <section className="keynote-abstract">
-            <h5>Abstract</h5>
+          {/* <section className="keynote-abstract">
             <p>{speaker.keynote.abstract}</p>
-          </section>
+          </section> */}
           
           <section className="keynote-profile">
-            <h5>Speaker Profile</h5>
             <p>{speaker.keynote.profile}</p>
           </section>
         </div>
         
         <footer className="modal-footer">
           <a href={speaker.link} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
-            Learn More
+            The Speaker's Homepage
           </a>
         </footer>
       </div>
@@ -505,7 +526,7 @@ function KeynoteModal({ speaker, isOpen, onClose }) {
 
 
 
-// Agenda Section Component with improved structure
+// Agenda Section Component
 function AgendaSection() {
   const agenda = useMemo(() => [
     { time: "Morning Session", event: "", type: "header" },
@@ -529,7 +550,7 @@ function AgendaSection() {
     <section className="agenda-section">
       <div className="container">
         <h2 className="section-title">Agenda</h2>
-        <p className="agenda-date">December 7, 2025</p>
+        <p className="agenda-date">December 6 or 7, 2025 @ San Diego Convention Center</p>
         
         <div className="agenda-timeline">
           {agenda.map((item, index) => (
@@ -551,109 +572,185 @@ function AgendaSection() {
 function CallForPapers() {
   const topics = [
     {
-      title: "(1) GenAI Applications in Health",
-      description: "Clinical diagnosis support, personalized treatment planning, synthetic biomedical data generation, AI-assisted surgical robotics, medical imaging interpretation."
+      title: "GenAI Applications and Use Cases in Health",
+      description: "We welcome submissions showcasing practical, innovative, and emerging applications of GenAI across the healthcare spectrum. Example areas include clinical diagnosis support, personalized treatment planning, digital twin-based simulation, synthetic biomedical data generation, remote patient monitoring, AI-assisted surgical robotics, intelligent medical imaging interpretation, and more."
     },
     {
-      title: "(2) Trustworthiness and Risk Management",
-      description: "Safety benchmarks, misuse detection, red teaming practices, explainability, ethical evaluations, bias mitigation."
+      title: "Trustworthiness and Risk Management",
+      description: "Approaches to ensuring the safety, robustness, and fairness of GenAI in medical contexts. Topics include safety benchmarks, misuse detection and prevention, red teaming practices, explainability and transparency, ethical evaluations focused on disparities and bias mitigation, and related safety considerations."
     },
     {
-      title: "(3) Policy, Regulation, and Compliance",
-      description: "FDA alignment, international standards, regulatory frameworks, deployment strategies, collaboration between developers and clinicians."
+      title: "Policy, Regulation, and Compliance",
+      description: "Analysis of regulatory frameworks and real-world deployment challenges. We welcome work addressing alignment with agencies such as the FDA, international standards for AI in healthcare, and strategies for collaboration among GenAI developers, clinicians, and policy experts."
+    }
+  ];
+
+  const submissionTracks = [
+    {
+      title: "Track 1: Research Papers",
+      subtitle: "Form the core of the program and present methodological advances and empirical evaluations",
+      description: "The main content of the paper should be no longer than 9 pages.",
+      icon: CoffeeIcon
+    },
+    {
+      title: "Track 2: Demonstration Papers", 
+      subtitle: "Showcasing working systems or applications",
+      description: "Present practical implementations and real-world applications. The main content of the paper should be no longer than 5 pages. <strong>The paper title should start with 'Demo:'</strong>.",
+      icon: InsertDriveFileIcon
+    },
+    {
+      title: "Track 3: Position Papers",
+      subtitle: "Offering perspectives or proposals on policy, governance, or deployment strategies",
+      description: "Provide insights on policy frameworks and deployment challenges. See <a href='https://neurips.cc/Conferences/2025/CallForPositionPapers' target='_blank' rel='noopener noreferrer'>NeurIPS 2025 Call for Position Papers</a> for more details. The main content of the paper should be no longer than 5 pages. <strong>The paper title should start with 'Position:'</strong>.",
+      icon: EmojiEventsIcon
     }
   ];
 
   const dates = [
     {
-      date: "Aug 30, 2025",
-      event: "PaperSubmission",
+      date: "Aug 22, 2025",
+      event: "Paper Submission Deadline",
       icon: InsertDriveFileIcon
     },
     {
-      date: "Sep 22, 2025",
-      event: "Acceptance",
+      date: "Sep 22, 2025", 
+      event: "Acceptance Notification",
       icon: EmojiEventsIcon
     },
     {
       date: "Oct 15, 2025",
-      event: "Camera-ready",
-      icon: CoffeeIcon
+      event: "Camera-ready Submission",
+      icon: InsertDriveFileIcon
     },
     {
-      date: "Dec 7, 2025",
-      event: "Workshop",
+      date: "Dec 6 or 7, 2025",
+      event: "Workshop Day",
       icon: GroupsIcon
     }
   ];
 
   return (
-    <div className="cfp-section">
-      <h2 className="section-title">Call for Papers</h2>
-      <p className="cfp-intro">
-        We invite submissions of original work related to Generative AI in healthcare across three main areas:
-      </p>
-      
-      <div className="topics-grid">
-        {topics.map((topic, index) => (
-          <div key={index} className="topic-card">
-            <h4 className="topic-title">{topic.title}</h4>
-            <p className="topic-description">{topic.description}</p>
-          </div>
-        ))}
-      </div>
-      
-      <div className="submission-info">
-        <div className="paper-types">
-          <h4>Submission Types</h4>
-          <div className="paper-types-list">
-            <div className="paper-type">
-              <h5>Research Papers</h5>
-              <p>Original methodological advances and empirical evaluations in GenAI for healthcare               <span className="page-limit">≤9 pages</span>
-               </p>
-            </div>
-            <div className="paper-type">
-              <h5>Demonstration Papers</h5>
-              <p>Working systems, applications, and tools with practical healthcare impact               <span className="page-limit">≤5 pages</span>
-              </p>
-            </div>
-            <div className="paper-type">
-              <h5>Position Papers</h5>
-              <p>Policy perspectives, governance frameworks, and deployment strategies               <span className="page-limit">≤5 pages</span>
-              </p>
-            </div>
-          </div>
-        </div>
+    <section className="cfp-section">
+      <div className="container">
+        <h2 className="section-title">Call for Papers</h2>
         
-        <div className="important-dates">
-          <h4>Important Dates</h4>
-          <div className="dates-grid">
-            {dates.map((item, index) => (
-              <div key={index} className="date-card">
-                <div className="date-icon">
-                  <item.icon />
+        <div className="cfp-content">
+          <div className="cfp-about">
+            <h3 className="cfp-subtitle">About</h3>
+            <p className="cfp-text">
+              Following the successful first GenAI4Health workshop at NeurIPS 2024 (<a href="https://genai4health.github.io/" target="_blank" rel="noopener noreferrer">https://genai4health.github.io/</a>), generative AI in healthcare has rapidly evolved from exploratory studies to real-world deployments. With increasing FDA involvement and expanding global regulatory frameworks, the second GenAI4Health workshop aims to bring together AI4Health practitioners, safety researchers, and policy experts to address critical challenges in developing robust and policy-compliant GenAI technologies for health.
+            </p>
+          </div>
+
+          <div className="cfp-important-dates">
+            <h3 className="cfp-subtitle">Important Dates</h3>
+            <br></br>
+            <div className="dates-grid">
+              {dates.map((item, index) => (
+                <div key={index} className="date-card">
+                  {/* Vertically center content with flex */}
+                  <style>{`.date-card { display: flex; flex-direction: column; justify-content: center; align-items: center; }`}</style>
+                  <time className="date-value">{item.date}</time>
+                  <p className="date-event">{item.event}</p>
                 </div>
-                <time className="date-value">{item.date}</time>
-                <p className="date-event">{item.event}</p>
+              ))}
+            </div>
+            <p className="cfp-text" style={{marginTop: '20px', textAlign: 'center', fontWeight: 'bold', color: '#d32f2f'}}>
+              <strong>⚠️ All deadlines are at 11:59 PM AoE (Anywhere on Earth)</strong>
+            </p>
+          </div>
+          <br></br>
+
+          <div className="submission-link">
+            <p className="cfp-text">
+              <strong>Submit your paper via the <a 
+                href="https://openreview.net/group?id=neurips.cc/2025/Workshop/GenAI4Health" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="cfp-link"
+              >
+                OpenReview Submission Portal
+              </a></strong>
+            </p>
+          </div>
+
+          <div className="workshop-scope">
+            <h3 className="cfp-subtitle">Topics of Interest</h3>
+            <p className="cfp-text">
+              For the second GenAI4Health workshop at NeurIPS 2025, we invite submissions of original, unpublished work related to the use of Generative AI in healthcare. 
+              Submissions may include, but are not limited to, the following three major topic areas:
+            </p>
+            
+            <div className="topics-list">
+              {topics.map((topic, index) => (
+                <div key={index} className="topic-item">
+                  <h4 className="topic-title">Topic {index + 1}: {topic.title}</h4>
+                  <p className="topic-description">{topic.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          <div className="submission-info">
+            <h3 className="cfp-subtitle">Submission Guidelines</h3>
+            
+            <div className="submission-tracks">
+              <h4 className="cfp-subsection-title">Submission Tracks</h4>
+              <p className="cfp-text">
+                Submissions within each track can fall into any of the above three topic areas. We provide three tracks for submissions:
+              </p>
+              <br></br>
+              
+              <div className="tracks-container">
+                {submissionTracks.map((track, index) => (
+                  <div key={index} className="track-item">
+                    <div className="track-header">
+                      <h5 className="track-title">{track.title}</h5>
+                    </div>
+                    <p className="track-subtitle">{track.subtitle}</p>
+                    <p className="track-description" dangerouslySetInnerHTML={{ __html: track.description }}></p>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+
+            <div className="submission-format">
+              <h4 className="cfp-subsection-title">Submission Format Requirements</h4>
+              <ul className="cfp-list">
+                <li>You must format your submission using the <a href="https://media.neurips.cc/Conferences/NeurIPS2025/Styles.zip" target="_blank" rel="noopener noreferrer">NeurIPS 2025 LaTeX style file.</a> NeurIPS Paper Checklist is not required.</li>
+                <li>Use <code>\usepackage{'{neurips_2025}'}</code> without options to ensure the submission is anonymous</li>
+                <li><strong>All page limits exclude acknowledgments, references, and appendix</strong></li>
+                <li>Papers may be rejected without consideration of their merits if they fail to meet the submission requirements</li>
+                <li>We encourage multidisciplinary submissions involving stakeholders from healthcare, public policy, or adjacent fields to ensure practical relevance and responsible innovation</li>
+                <li>Supplementary materials (code, data, videos) may be submitted as appendices</li>
+                <li>Submissions must not be under review at other venues at the time of submission and should be unpublished (pre-print is allowed)</li>
+                <li><strong>The accepted papers will be non-archival (NOT included in proceedings or any form of publication)</strong></li>
+                <li><strong>Non-archival status means papers can be submitted to other venues after the workshop</strong></li>
+              </ul>
+            </div>
+
+            <div className="review-process">
+              <h4 className="cfp-subsection-title">Review Process</h4>
+              <ul className="cfp-list">
+                <li>Each paper will receive three anonymous reviews</li>
+                <li><strong>All submissions must be anonymized and may not contain any identifying information</strong></li>
+                <li>This policy applies to any supplementary or linked material as well, including code</li>
+                <li><strong>Please do not include acknowledgments at submission time. Any papers found to be violating this policy will be rejected</strong></li>
+              </ul>
+            </div>
+
+            <div className="presentation-awards">
+              <h4 className="cfp-subsection-title">Presentation & Awards</h4>
+              <ul className="cfp-list">
+                <li>All accepted papers will be presented with posters</li>
+                <li>Oral/spotlight presentations will be selected from the accepted papers</li>
+                <li><strong>Three Outstanding Paper Awards will be selected, one for each paper track</strong></li>
+              </ul>
+            </div>
           </div>
         </div>
-        
-        <div className="submission-highlight">
-          <h4>Submit Your Paper</h4>
-          <p>All submissions must be made through our OpenReview portal:</p>
-          <a 
-            href="https://openreview.net/group?id=neurips.cc/2025/Workshop/GenAI4Health"
-            className="btn btn-primary"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            OpenReview Submission Portal
-          </a>
-        </div>
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -663,31 +760,31 @@ function OrganizersSection() {
     {
       name: "Jiawei Xu",
       institution: "UT Austin",
-      link: "https://www.linkedin.com/in/jiawei-xu-ut/",
+      link: "https://jiaweixu98.github.io/",
       image: process.env.PUBLIC_URL + "/data/images/organizers/jiaweixu.jpg"
     },
     {
       name: "Tiange Xiang",
       institution: "Stanford University",
-      link: "https://www.linkedin.com/in/tiange-xiang/",
+      link: "https://ai.stanford.edu/~xtiange/",
       image: process.env.PUBLIC_URL + "/data/images/organizers/tiange.jpg"
     },
     {
       name: "Pranav Rajpurkar",
       institution: "Harvard University",
-      link: "https://rajpurkar.github.io/",
+      link: "https://dbmi.hms.harvard.edu/people/pranav-rajpurkar",
       image: process.env.PUBLIC_URL + "/data/images/organizers/PranavRajpurkar_1.jpeg"
     },
     {
       name: "Junyuan Hong",
       institution: "UT Austin",
-      link: "https://www.linkedin.com/in/junyuan-hong/",
+      link: "https://jyhong.gitlab.io/",
       image: process.env.PUBLIC_URL + "/data/images/organizers/junyuan.jpg"
     },
     {
       name: "Changan Chen",
       institution: "Stanford University",
-      link: "https://www.linkedin.com/in/changan-chen/",
+      link: "https://changan.io/",
       image: process.env.PUBLIC_URL + "/data/images/organizers/changan.jpg"
     },
     {
@@ -699,7 +796,7 @@ function OrganizersSection() {
     {
       name: "Xiaoxiao Li",
       institution: "University of British Columbia",
-      link: "https://www.ece.ubc.ca/~xiaoxiaoli/",
+      link: "https://xxlya.github.io/",
       image: process.env.PUBLIC_URL + "/data/images/organizers/xiaoxiao.jpg"
     },
     {
@@ -707,6 +804,12 @@ function OrganizersSection() {
       institution: "UT Austin",
       link: "https://geopavlakos.github.io/",
       image: process.env.PUBLIC_URL + "/data/images/organizers/georgios_pavlakos_res.jpg"
+    },
+    {
+      name: "Zakia Hammal",
+      institution: "CMU",
+      link: "https://www.cmu.edu/bme/People/Faculty/profile/zhammal.html",
+      image: process.env.PUBLIC_URL + "/data/images/organizers/zakia.jpg"
     },
     {
       name: "Scott Delp",
@@ -723,10 +826,140 @@ function OrganizersSection() {
     {
       name: "Ying Ding",
       institution: "UT Austin",
-      link: "https://yingding.ischool.utexas.edu/",
+      link: "https://ischool.utexas.edu/profiles/ying-ding",
       image: process.env.PUBLIC_URL + "/data/images/organizers/YingDing.jpg"
     }
   ], []);
+
+  const studentOrganizers = useMemo(() => [
+    {
+      name: "Lily Boddy",
+      institution: "UT Austin",
+      role: "Student Volunteer",
+      link: "https://www.linkedin.com/in/lily-boddy/",
+      image: process.env.PUBLIC_URL + "/data/images/organizers/Lily Boddy.jpeg" 
+    },
+    {
+      name: "Gregory Holste",
+      institution: "UT Austin",
+      role: "Student Volunteer",
+      link: "https://www.gholste.me/",
+      image: process.env.PUBLIC_URL + "/data/images/organizers/Gregory.png" 
+    },
+    {
+      name: "Yan Han",
+      institution: "Amazon",
+      role: "Award Committee",
+      link: "https://yannhan.github.io/",
+      image: process.env.PUBLIC_URL + "/data/images/organizers/yanhan.jpeg"
+    }
+  ], []);
+
+    const pcMembers = useMemo(() => [
+    { name: "Ajay Jaiswal", institution: "Apple" },
+    { name: "Akshay Swaminathan", institution: "Stanford" },
+    { name: "Bojian Hou", institution: "UPenn" },
+    { name: "Carl Yang", institution: "Emory" },
+    { name: "Chulin Xie", institution: "UIUC" },
+    { name: "Greg Holste", institution: "UT Austin" },
+    { name: "Haobo Zhang", institution: "MSU" },
+    { name: "Han Xie", institution: "Emory" },
+    { name: "Hejie Cui", institution: "Stanford" },
+    { name: "Jiaying Lu", institution: "Emory" },
+    { name: "Jiayu Zhou", institution: "MSU" },
+    { name: "Jie Liu", institution: "CityU HK" },
+    { name: "Jiliang Tang", institution: "MSU" },
+    { name: "Jinzhen Hu", institution: "JHU" },
+    { name: "Joseph Cohen", institution: "Amazon" },
+    { name: "Juan Zhou", institution: "NUS" },
+    { name: "Junbiao Li", institution: "DUT" },
+    { name: "Junfei Xiao", institution: "JHU" },
+    { name: "Justin Engelmann", institution: "Edinburgh" },
+    { name: "Kaiwen Zha", institution: "MIT" },
+    { name: "Kaidi Xu", institution: "Drexel" },
+    { name: "Kaixiong Zhou", institution: "MIT" },
+    { name: "Karam Maher", institution: "Cairo" },
+    { name: "Kowshik Thopalli", institution: "ASU" },
+    { name: "Liangyu Chen", institution: "NTU" },
+    { name: "Ling Luo", institution: "DUT" },
+    { name: "Lukas Klein", institution: "ETH Zurich" },
+    { name: "Mahed Abroshan", institution: "Optum AI" },
+    { name: "Martin Norgaard", institution: "Copenhagen" },
+    { name: "Md Mahfuzur Rahman", institution: "GSU" },
+    { name: "Mehmet Gulum", institution: "UofL" },
+    { name: "Meirui Jiang", institution: "CUHK" },
+    { name: "Michael Wornow", institution: "Stanford" },
+    { name: "Miguel Fuentes", institution: "Stanford" },
+    { name: "Mohammad Ali Khan", institution: "UCSD" },
+    { name: "Mohammad Reza Hosseinzadeh Taher", institution: "ASU" },
+    { name: "Monica Munnangi", institution: "Stanford" },
+    { name: "Nidhi Rastogi", institution: "RIT" },
+    { name: "Nikita Moriakov", institution: "Radboud UMC" },
+    { name: "Noah Lewis", institution: "GT" },
+    { name: "Ophelia Yin", institution: "UCSF" },
+    { name: "Prithwish Chakraborty", institution: "Amazon" },
+    { name: "Puneet Kumar", institution: "IIT Delhi" },
+    { name: "Qinbin Li", institution: "UC Berkeley" },
+    { name: "Qinru Li", institution: "UCSD" },
+    { name: "Qi Chen", institution: "USTC" },
+    { name: "Qixin Hu", institution: "HUST" },
+    { name: "Riqiang Gao", institution: "Siemens Healthineers" },
+    { name: "Rishards Marcinkevics", institution: "ETH Zurich" },
+    { name: "Ruibin Feng", institution: "Stanford" },
+    { name: "Ruishan Liu", institution: "Stanford" },
+    { name: "Runyu Gao", institution: "JHU" },
+    { name: "Satyapriya Krishna", institution: "Harvard" },
+    { name: "Sarah Woldemariam", institution: "UCSF" },
+    { name: "Sayantan Kumar", institution: "WashU" },
+    { name: "Shantanu Ghosh", institution: "BU" },
+    { name: "Sheng Li", institution: "Stanford" },
+    { name: "Shiru Wang", institution: "Dartmouth" },
+    { name: "Shuang Li", institution: "CUHK-SZ" },
+    { name: "Shuhao Fu", institution: "UCLA" },
+    { name: "Song Wang", institution: "UT Austin" },
+    { name: "Sonish Sivarajkumar", institution: "Pitt" },
+    { name: "Suhana Bedi", institution: "Stanford" },
+    { name: "Syed Hasan Amin Mahmood", institution: "Purdue" },
+    { name: "Tiancheng Lin", institution: "SJTU" },
+    { name: "Tianhao Li", institution: "UT Austin" },
+    { name: "Tianlong Chen", institution: "UNC Chapel Hill" },
+    { name: "Tianrui Liu", institution: "Imperial" },
+    { name: "Tongtong Su", institution: "SEU" },
+    { name: "Tuomas Oikarinen", institution: "UCSD" },
+    { name: "Wei Jin", institution: "Emory" },
+    { name: "Weicheng Zhu", institution: "NYU" },
+    { name: "Wenlong Deng", institution: "UBC" },
+    { name: "Wenxuan Li", institution: "JHU" },
+    { name: "Wenying Deng", institution: "Harvard" },
+    { name: "Xiaoxiao Li", institution: "UBC" },
+    { name: "Xiangru Tang", institution: "Yale" },
+    { name: "Xuelin Yang", institution: "Stanford" },
+    { name: "Xuxi Chen", institution: "UT Austin" },
+    { name: "Ya Tang", institution: "UMass" },
+    { name: "Yahan Yang", institution: "UPenn SEAS" },
+    { name: "Yasuobu Nohara", institution: "Kumamoto" },
+    { name: "Yifan Wu", institution: "UPenn" },
+    { name: "Yingwei Li", institution: "Waymo LLC" },
+    { name: "Yixiong Chen", institution: "JHU" },
+    { name: "Yongyi Lu", institution: "GDUT" },
+    { name: "Yu-Cheng Chou", institution: "JHU" },
+    { name: "Yuankai Huo", institution: "Vanderbilt" },
+    { name: "Yuxiang Lai", institution: "SEU" },
+    { name: "Zepeng Huo", institution: "Stanford" },
+    { name: "Zhenglun Kong", institution: "MIT" },
+    { name: "Ziwei Yang", institution: "UT Austin" }
+  ], []);
+
+  const [visiblePcMembers, setVisiblePcMembers] = useState(20);
+  const [showLoadMore, setShowLoadMore] = useState(true);
+
+  const handleLoadMore = useCallback(() => {
+    const newCount = visiblePcMembers + 20;
+    setVisiblePcMembers(newCount);
+    if (newCount >= pcMembers.length) {
+      setShowLoadMore(false);
+    }
+  }, [visiblePcMembers, pcMembers.length]);
 
   return (
     <div className="organizers-section">
@@ -735,13 +968,36 @@ function OrganizersSection() {
         {organizers.map((organizer, index) => (
           <OrganizerCard key={index} {...organizer} />
         ))}
+        {studentOrganizers.map((organizer, index) => (
+          <OrganizerCard key={`student-${index}`} {...organizer} />
+        ))}
       </div>
+      
+      <h3 className="organizers-subtitle">Program Committee</h3>
+      <p className="pc-note">Listed in alphabetical order</p>
+      <div className="pc-members-list">
+        {pcMembers.slice(0, visiblePcMembers).map((member, index) => (
+          <div key={index} className="pc-member">
+            <span className="pc-name">{member.name}</span>
+            <br />
+            <span className="pc-institution">{member.institution}</span>
+          </div>
+        ))}
+      </div>
+      
+      {showLoadMore && (
+        <div className="load-more-container">
+          <button className="load-more-btn" onClick={handleLoadMore}>
+            More PC Members ({pcMembers.length - visiblePcMembers} remaining)
+          </button>
+        </div>
+      )}
     </div>
   );
 }
 
 // Organizer Card Component
-function OrganizerCard({ name, institution, image, link }) {
+function OrganizerCard({ name, institution, role, image, link }) {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   const handleImageLoad = useCallback(() => setImageLoaded(true), []);
@@ -772,6 +1028,7 @@ function OrganizerCard({ name, institution, image, link }) {
       <div className="organizer-info">
         <h4 className="organizer-name">{name}</h4>
         <p className="organizer-institution">{institution}</p>
+        {role && <p className="organizer-role">{role}</p>}
       </div>
     </article>
   );
@@ -813,10 +1070,10 @@ function Footer() {
           <div className="footer-section">
             <h4 className="footer-title">Important Dates</h4>
             <ul className="footer-dates">
-              <li>Submissions: Aug 30, 2025</li>
+              <li>Submissions: Aug 22, 2025</li>
               <li>Notifications: Sep 22, 2025</li>
               <li>Camera-ready: Oct 15, 2025</li>
-              <li>Workshop: Dec 7, 2025</li>
+              <li>Workshop: Dec 6 or 7, 2025</li>
             </ul>
           </div>
           
