@@ -1,0 +1,63 @@
+CALL FOR PAPERS
+
+-----------------------------------------------------------------------------
+International Workshop on Knowledge Graphs: Open Knowledge Network
+https://aiisc.ai/KGKDD2022/
+
+Co-located with ACM KDD 2022 (https://kdd.org/kdd2022/index.html)
+
+August 15, 2022, Washington DC, USA
+------------------------------------------------------------------------------ 
+
+Knowledge networks/graphs provide a powerful approach for data discovery, integration, and reuse. Knowledge Graphs (KGs) have emerged as a compelling abstraction for organizing and interconnecting the world's structured knowledge in order to integrate information extracted from multiple data sources. Such knowledge graphs, and knowledge networks, are beginning to play a central role in representing information extracted by AI systems and improving the predictions of AI systems by providing knowledge expressed in KGs as inputs. The interconnectedness among data elements that is represented by these graphs/networks is essential to the future of AI, particularly machine learning, as we move towards developing more sophisticated algorithms to solve more complex problems, and to solve problems more comprehensively. This workshop is a joint effort with the NSF's new Convergence Accelerator program, which focuses on transitioning research to practice and translational research, who announced Track A on the Open Knowledge Network (OKN). The program calls for multidisciplinary and multi-sector teams to work together to build a cooperative and shared open knowledge network infrastructure to drive innovation across science, engineering, and humanities. The technical construction of knowledge graphs may leverage machine learning, deep learning, natural language processing, and AI algorithms to extract concepts and relationships, identify hidden connections, generate deep learning embeddings, predict new potential linkages, and infer new knowledge, not only based on predefined rules but also through embedding-driven representation learning methods to enable automatic reasoning based on large scale data. The applications of this technology are literally unbounded and apply to almost any domain, including homelessness, supply chain, climate change, bias in research, and disaster response. The OKN initiative has generated best practices in the biomedical, geoscience, finance, and smart manufacturing domains. 
+
+This workshop aims to invite researchers, practitioners, and the general public to brainstorm ideas related to OKN, collaboratively build KGs for different domains or applications, develop AI algorithms to provide intelligent services based on OKN, and discuss the social and economic implications related to OKN. The topics of this workshop include (but are not limited to):
+    - Building KGs for specific domains or applications
+    - Semantic annotation and ontologies for KGs
+    - Natural Language Processing (NLP) algorithms to build KGs
+    - Relationship extraction using Natural Language Processing (NLP) and deep learning
+    - Semantic reasoning based on semantic technologies or deep learning
+    - Smart services powered by OKN
+    - Best practices of open knowledge graphs
+    - Heterogeneous graph embedding, graph transformer, and graph convolutional neural network
+    - Graph deep learning for semantic reasoning
+    - Visual searching and browsing of KGs
+    - Industrial applications of KGs: banking, financing, retail, healthcare, medicine, pharma, etc.
+    - KGs in computer vision, medical imaging
+    - KGs for explainable AI
+    - Social issues related to KGs and OKN
+    - Design principles for successful adoption and value delivery to data and user communities
+    - UI and UX for knowledge graphs and their applications
+
+
+Important Dates
+---------------
+?	Workshop paper submissions: May 26, 2022
+?	Workshop paper notifications: June 20, 2022
+?	Camera-ready, July 9, 2022
+?	Workshop date: August 15, 2022
+
+
+Submission Guidelines
+--------------------------
+Authors can submit either full papers of 8 pages in length or short papers of 4 pages length in the ACM format (https://www.acm.org/publications/proceedings-template), with the "sigconf" option. Since we plan to follow single-blind review process, there is no need to anonymize the author list. Submissions can be made using EasyChair (https://easychair.org/my/conference?conf=okn2022).  
+
+High quality submissions with substantial revisions will be invited to submit to Data Intelligence Journal published by MIT Press (https://www.mitpressjournals.org/loi/dint) or Semantic Web Journal (http://www.semantic-web-journal.net/)
+
+
+Workshop Organizers
+------------------------
+Ying Ding, University of Texas at Austin, USA
+Amit Sheth, University of South Carolina 
+Krzysztof W. Janowicz, University of California-Santa Barbara
+Sergio Baranzini, UCSF Weill Institute for Neurosciences
+Sharat Israni, UCSF Bakar Computational Health Sciences Institute
+Ilkay Altintas, San Diego Supercomputer Center
+Lilit Yeghiazarian, University of Cincinnati
+Ellie Young, Common Action
+Samuel Klein, Harvard University
+
+
+Contact Information
+-----------------------
+ying.ding@austin.utexas.edu

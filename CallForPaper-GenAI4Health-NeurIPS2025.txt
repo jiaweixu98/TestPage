@@ -1,0 +1,113 @@
+CALL FOR PAPERS
+
+-----------------------------------------------------------------------------
+The Second Workshop on GenAI for Health: Potential, Trust, and Policy Compliance
+
+Co-located with NeurIPS 2025 (https://neurips.cc/)
+
+December 6 or 7, 2025, San Diego Convention Center, California, USA
+
+For more details, visit: https://aihealth.ischool.utexas.edu/GenAI4HealthNeurips2025/
+------------------------------------------------------------------------------ 
+
+Following the successful first GenAI4Health workshop at NeurIPS 2024 (https://genai4health.github.io/), generative AI in healthcare has rapidly evolved from exploratory studies to real-world deployments. With increasing FDA involvement and expanding global regulatory frameworks, the second GenAI4Health workshop aims to bring together AI4Health practitioners, safety researchers, and policy experts to address critical challenges in developing robust and policy-compliant GenAI technologies for health.
+
+Generative AI has shown tremendous potential in revolutionizing healthcare delivery, from clinical diagnosis support and personalized treatment planning to synthetic biomedical data generation and AI-assisted surgical robotics. However, as these technologies move from research prototypes to clinical deployment, ensuring trustworthiness, safety, and regulatory compliance becomes paramount. This workshop provides a unique platform for interdisciplinary collaboration among AI researchers, healthcare professionals, policy makers, and regulatory experts to shape the future of responsible GenAI deployment in healthcare.
+
+TOPICS OF INTEREST
+
+For the second GenAI4Health workshop at NeurIPS 2025, we invite submissions of original, unpublished work related to the use of Generative AI in healthcare. Submissions may include, but are not limited to, the following three major topic areas:
+
+Topic 1: GenAI Applications and Use Cases in Health
+We welcome submissions showcasing practical, innovative, and emerging applications of GenAI across the healthcare spectrum. Example areas include:
+- Clinical diagnosis support systems
+- Personalized treatment planning and recommendation
+- Synthetic biomedical data generation
+- AI-assisted surgical robotics and medical imaging
+- Drug discovery and development
+
+Topic 2: Trustworthiness and Risk Management
+Approaches to ensuring the safety, robustness, and fairness of GenAI in medical contexts. Topics include:
+- Safety benchmarks and evaluation metrics
+- Explainability and transparency in medical AI
+- Robustness testing for clinical environments
+- Privacy-preserving techniques for medical data
+- Fairness and equity considerations in healthcare AI
+
+Topic 3: Policy, Regulation, and Compliance
+Analysis of regulatory frameworks and real-world deployment challenges. Topics include:
+- FDA alignment and approval processes for AI medical devices
+- HIPAA and data privacy compliance strategies
+- Clinical validation and evidence generation
+- Post-market surveillance and safety monitoring
+- Ethical guidelines and professional standards
+
+SUBMISSION TRACKS
+
+Submissions within each track can fall into any of the above three topic areas. We provide three tracks for submissions:
+
+Track 1: Research Papers
+Form the core of the program and present methodological advances and empirical evaluations. The main content of the paper should be no longer than 9 pages.
+
+Track 2: Demonstration Papers
+Showcasing working systems or applications. Present practical implementations and real-world applications. The main content of the paper should be no longer than 5 pages. The paper title should start with 'Demo:'.
+
+Track 3: Position Papers
+Offering perspectives or proposals on policy, governance, or deployment strategies. Provide insights on policy frameworks and deployment challenges. See NeurIPS 2025 Call for Position Papers (https://neurips.cc/Conferences/2025/CallForPositionPapers) for more details. The main content of the paper should be no longer than 5 pages. The paper title should start with 'Position:'.
+
+IMPORTANT DATES
+---------------
+• Paper Submission Deadline: August 22, 2025
+• Acceptance Notification: September 22, 2025
+• Camera-ready Submission: October 15, 2025
+• Workshop Date: December 6 or 7, 2025
+
+⚠️ All deadlines are at 11:59 PM AoE (Anywhere on Earth)
+
+SUBMISSION GUIDELINES
+---------------------
+
+Format Requirements:
+• Use NeurIPS 2025 LaTeX style file (https://media.neurips.cc/Conferences/NeurIPS2025/Styles.zip)
+• Use \usepackage{neurips_2025} without options for anonymous submission
+• Page limits exclude acknowledgments, references, and appendix
+• Papers must be anonymized with no identifying information
+• Submissions must be unpublished and not under review elsewhere (pre-prints allowed)
+
+Review Process:
+• Each paper receives three anonymous reviews
+• Single-blind review process for supplementary materials
+• Accepted papers are non-archival and can be submitted to other venues
+
+Awards:
+• All accepted papers presented with posters
+• Oral/spotlight presentations selected from accepted papers
+• Three Outstanding Paper Awards (one per track)
+
+SUBMISSION PORTAL
+-----------------
+Submit your paper via the OpenReview Submission Portal:
+https://openreview.net/group?id=NeurIPS.cc/2025/Workshop/GenAI4Health
+
+WORKSHOP ORGANIZERS
+-------------------
+Jiawei Xu, University of Texas at Austin, USA
+Tiange Xiang, Stanford University, USA
+Pranav Rajpurkar, Harvard University, USA
+Junyuan Hong, University of Texas at Austin, USA
+Changan Chen, Stanford University, USA
+Ehsan Adeli, Stanford University, USA
+Xiaoxiao Li, University of British Columbia, Canada
+Georgios Pavlakos, University of Texas at Austin, USA
+Zakia Hammal, Carnegie Mellon University, USA
+Scott Delp, Stanford University, USA
+Fei-Fei Li, Stanford University, USA
+Ying Ding, University of Texas at Austin, USA
+
+CONTACT INFORMATION
+-------------------
+Jiawei Xu: jiaweixu@utexas.edu
+Tiange Xiang: xtiange@stanford.edu
+Ying Ding: ying.ding@ischool.utexas.edu
+
+For general inquiries about the workshop, please contact the organizers above. 

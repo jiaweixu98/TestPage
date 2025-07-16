@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
-import ReactGA from 'react-ga';
 import { Link, Element } from 'react-scroll';
 import { animateScroll as scroll } from 'react-scroll';
+import SEOFallback from './components/SEOFallback';
 
 // Icons
 import MenuIcon from '@mui/icons-material/Menu';
@@ -13,8 +13,23 @@ import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import CoffeeIcon from '@mui/icons-material/Coffee';
 import GroupsIcon from '@mui/icons-material/Groups';
 
-// Initialize Google Analytics
-ReactGA.initialize('G-D2BRX1PQJQ');
+// Google Analytics 4 tracking
+const gtag = window.gtag || function() {};
+
+// Track page views
+const trackPageView = (page) => {
+  gtag('config', 'G-D2BRX1PQJQ', {
+    page_path: page
+  });
+};
+
+// Track custom events
+const trackEvent = (action, category, label) => {
+  gtag('event', action, {
+    event_category: category,
+    event_label: label
+  });
+};
 
 // Custom hooks for better state management
 const useScrollPosition = () => {
@@ -57,7 +72,16 @@ function App() {
   const { isNavActive, showScrollTop } = useScrollPosition();
 
   useEffect(() => {
-    ReactGA.pageview('/');
+    trackPageView('/');
+    
+    // Update document title for better SEO
+    document.title = "GenAI4Health@NeurIPS2025";
+    
+    // Add meta description for better SEO
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'The Second Workshop on GenAI for Health at NeurIPS 2025. Join leading researchers exploring AI potential, trust, and policy compliance in healthcare. Submit papers by Aug 22, 2025. San Diego, Dec 6-7, 2025.');
+    }
   }, []);
 
   const scrollToTop = useCallback(() => {
@@ -68,7 +92,7 @@ function App() {
     <div className="App">
       <NavigationBar isActive={isNavActive} />
       
-      <main className="content">
+      <main className="content" role="main">
         <Element name="Home">
           <HomeSection />
         </Element>
@@ -95,6 +119,9 @@ function App() {
       </main>
       
       <Footer />
+      
+      {/* SEO Fallback Content - Hidden by default, shown when JS is disabled */}
+      <SEOFallback />
     </div>
   );
 }
@@ -168,6 +195,7 @@ function NavigationBar({ isActive }) {
                 onClick={() => {
                   setActiveSection(item.to);
                   closeMenu();
+                  trackEvent('navigation_click', 'navigation', item.label);
                 }}
                 onSetActive={() => setActiveSection(item.to)}
                 role="menuitem"
@@ -207,7 +235,7 @@ function HomeSection() {
     >
       <div className={`home-content ${isVisible ? 'animate-in' : ''}`}>
         <h1 className="home-title">
-          The Second Workshop on GenAI for Health:<br />
+          The Second Workshop on GenAI for Health<br />
           Potential, Trust, and Policy Compliance
         </h1>
         
@@ -218,7 +246,7 @@ function HomeSection() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            @NeurIPS 2025
+            GenAI4Health @NeurIPS 2025
           </a>
           <p className="home-location">San Diego Convention Center, California, USA</p>
           <p className="home-date">December 6 or 7, 2025</p>
@@ -230,14 +258,16 @@ function HomeSection() {
             className="btn btn-primary"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackEvent('button_click', 'home', 'attend_conference')}
           >
             Attend Conference
           </a>
           <a 
-            href="https://openreview.net/group?id=neurips.cc/2025/Workshop/GenAI4Health" 
+            href="https://openreview.net/group?id=NeurIPS.cc/2025/Workshop/GenAI4Health" 
             className="btn btn-secondary"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackEvent('button_click', 'home', 'submit_paper')}
           >
             Submit Paper
           </a>
@@ -417,11 +447,13 @@ function SpeakersSection() {
   const handleSpeakerClick = (speaker) => {
     setSelectedSpeaker(speaker);
     setIsModalOpen(true);
+    trackEvent('speaker_modal_open', 'speakers', speaker.name);
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setSelectedSpeaker(null);
+    trackEvent('speaker_modal_close', 'speakers', selectedSpeaker?.name || 'unknown');
   };
 
   return (
@@ -531,14 +563,14 @@ function AgendaSection() {
   const agenda = useMemo(() => [
     { time: "Morning Session", event: "", type: "header" },
     { time: "08:00 - 08:10", event: "Opening Remarks", type: "session" },
-    { time: "08:10 - 10:10", event: "Keynote Session I (4 keynote talks, 30 min each incl. Q&A)", type: "session" },
+    { time: "08:10 - 10:10", event: "Keynote Session I (6 keynote talks, 20 min each)", type: "session" },
     { time: "10:10 - 10:30", event: "Morning Coffee Break", type: "break" },
     { time: "10:30 - 11:00", event: "Panel Discussion I (with morning speakers)", type: "session" },
     { time: "11:00 - 11:45", event: "Contributed Talks I (3 research talks, 15 min each)", type: "session" },
     { time: "11:45 - 12:00", event: "Session Buffer", type: "buffer" },
     { time: "12:00 - 13:00", event: "Lunch Break", type: "break" },
     { time: "Afternoon Session", event: "", type: "header" },
-    { time: "13:00 - 15:00", event: "Keynote Session II (4 keynote talks, 30 min each incl. Q&A)", type: "session" },
+    { time: "13:00 - 15:00", event: "Keynote Session II (6 keynote talks, 20 min each)", type: "session" },
     { time: "15:00 - 15:20", event: "Afternoon Coffee Break", type: "break" },
     { time: "15:20 - 15:50", event: "Panel Discussion II (with afternoon speakers)", type: "session" },
     { time: "15:50 - 16:40", event: "Poster Session (1 interactive session, 50 min)", type: "session" },
@@ -664,7 +696,7 @@ function CallForPapers() {
           <div className="submission-link">
             <p className="cfp-text">
               <strong>Submit your paper via the <a 
-                href="https://openreview.net/group?id=neurips.cc/2025/Workshop/GenAI4Health" 
+                href="https://openreview.net/group?id=NeurIPS.cc/2025/Workshop/GenAI4Health" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="cfp-link"
@@ -846,13 +878,13 @@ function OrganizersSection() {
       link: "https://www.gholste.me/",
       image: process.env.PUBLIC_URL + "/data/images/organizers/Gregory.png" 
     },
-    {
-      name: "Yan Han",
-      institution: "Amazon",
-      role: "Award Committee",
-      link: "https://yannhan.github.io/",
-      image: process.env.PUBLIC_URL + "/data/images/organizers/yanhan.jpeg"
-    }
+    // {
+    //   name: "Yan Han",
+    //   institution: "Amazon",
+    //   role: "Award Committee",
+    //   link: "https://yannhan.github.io/",
+    //   image: process.env.PUBLIC_URL + "/data/images/organizers/yanhan.jpeg"
+    // }
   ], []);
 
     const pcMembers = useMemo(() => [
@@ -968,11 +1000,16 @@ function OrganizersSection() {
         {organizers.map((organizer, index) => (
           <OrganizerCard key={index} {...organizer} />
         ))}
+      </div>
+
+      {/* Student Organizers Section */}
+      <h3 className="organizers-subtitle">Student Organizers</h3>
+      <div className="organizers-grid">
         {studentOrganizers.map((organizer, index) => (
-          <OrganizerCard key={`student-${index}`} {...organizer} />
+          <OrganizerCard key={`student-${index}`} {...organizer} showRole={false} />
         ))}
       </div>
-      
+
       <h3 className="organizers-subtitle">Program Committee</h3>
       <p className="pc-note">Listed in alphabetical order</p>
       <div className="pc-members-list">
@@ -997,7 +1034,7 @@ function OrganizersSection() {
 }
 
 // Organizer Card Component
-function OrganizerCard({ name, institution, role, image, link }) {
+function OrganizerCard({ name, institution, role, image, link, showRole = true }) {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   const handleImageLoad = useCallback(() => setImageLoaded(true), []);
@@ -1028,7 +1065,7 @@ function OrganizerCard({ name, institution, role, image, link }) {
       <div className="organizer-info">
         <h4 className="organizer-name">{name}</h4>
         <p className="organizer-institution">{institution}</p>
-        {role && <p className="organizer-role">{role}</p>}
+        {showRole && role && <p className="organizer-role">{role}</p>}
       </div>
     </article>
   );
@@ -1040,25 +1077,22 @@ function Footer() {
     <footer className="footer" id="Contact">
       <div className="container">
         <div className="footer-content">
-          <div className="footer-section">
-            <a 
-              href="https://neurips.cc/"
-              className="footer-logo"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="NeurIPS Homepage"
-            >
-              <img 
-                alt="NeurIPS Logo" 
-                src={process.env.PUBLIC_URL + '/data/images/logo/neurips-navbar-logo.svg'} 
-              />
-            </a>
-          </div>
-          
+          <a 
+            href="https://neurips.cc/"
+            className="footer-logo"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="NeurIPS Homepage"
+          >
+            <img 
+              alt="NeurIPS Logo" 
+              src={process.env.PUBLIC_URL + '/data/images/logo/neurips-navbar-logo.svg'} 
+            />
+          </a>
           <div className="footer-section">
             <h4 className="footer-title">Submission</h4>
             <a 
-              href="https://openreview.net/group?id=neurips.cc/2025/Workshop/GenAI4Health"
+              href="https://openreview.net/group?id=NeurIPS.cc/2025/Workshop/GenAI4Health"
               className="footer-link"
               target="_blank"
               rel="noopener noreferrer"
@@ -1066,7 +1100,27 @@ function Footer() {
               OpenReview Submission Portal
             </a>
           </div>
-          
+          <div className="footer-section">
+            <h4 className="footer-title">Past Events</h4>
+            <div className="footer-links-row" style={{ flexDirection: 'column', alignItems: 'center', gap: '0.5rem', display: 'flex' }}>
+              <a 
+                href="https://genai4health.github.io/"
+                className="footer-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GenAI4Health @ NeurIPS 2024
+              </a>
+              <a 
+                href="https://sites.google.com/view/genai4health-aaai-2025"
+                className="footer-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GenAI4Health @ AAAI 2025
+              </a>
+            </div>
+          </div>
           <div className="footer-section">
             <h4 className="footer-title">Important Dates</h4>
             <ul className="footer-dates">
@@ -1076,7 +1130,6 @@ function Footer() {
               <li>Workshop: Dec 6 or 7, 2025</li>
             </ul>
           </div>
-          
           <div className="footer-section">
             <h4 className="footer-title">Contact Us</h4>
             <p className="footer-contact">Jiawei Xu</p>
