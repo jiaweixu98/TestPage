@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: ./sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Allow all important directories
+Allow: /data/
+Allow: /static/
+
+# Disallow any private or admin areas (if they exist)
+Disallow: /admin/
+Disallow: /private/ 
