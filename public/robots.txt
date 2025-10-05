@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://aihealth.ischool.utexas.edu/GenAI4HealthNeurips2025/sitemap.xml
+Sitemap: ./sitemap.xml
 
 # Crawl-delay for respectful crawling
 Crawl-delay: 1

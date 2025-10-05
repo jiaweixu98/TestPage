@@ -17,7 +17,7 @@ const SEOFallback = () => {
           <li><strong>Date:</strong> December 6-7, 2025</li>
           <li><strong>Location:</strong> San Diego Convention Center, San Diego, California</li>
           <li><strong>Conference:</strong> NeurIPS 2025</li>
-          <li><strong>Paper Submission Deadline:</strong> August 22, 2025</li>
+          <li><strong>Paper Submission Deadline:</strong> September 5, 2025</li>
         </ul>
       </section>
 
@@ -35,7 +35,7 @@ const SEOFallback = () => {
 
       <section>
         <h2>GenAI4Health2025 Important Information</h2>
-        <p>Join us at GenAI4Health2025 to explore the future of AI in healthcare. Submit your research papers by August 22, 2025, and be part of this groundbreaking workshop at NeurIPS 2025.</p>
+        <p>Join us at GenAI4Health2025 to explore the future of AI in healthcare. Submit your research papers by September 5, 2025, and be part of this groundbreaking workshop at NeurIPS 2025.</p>
       </section>
 
       <section>

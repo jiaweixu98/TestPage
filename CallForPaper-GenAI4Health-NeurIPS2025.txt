@@ -10,6 +10,18 @@ December 6 or 7, 2025, San Diego Convention Center, California, USA
 For more details, visit: https://aihealth.ischool.utexas.edu/GenAI4HealthNeurips2025/
 ------------------------------------------------------------------------------ 
 
+CAMERA-READY SUBMISSION GUIDELINES
+----------------------------------
+For authors of accepted papers, please follow these guidelines for your camera-ready submission:
+
+(1) Review and Revision: Please carefully consider all reviewer comments and address their concerns thoroughly. Conduct a comprehensive proofread of your manuscript to ensure clarity, accuracy, and professional presentation.
+
+(2) LaTeX Formatting: In your .tex file, please use \usepackage[dblblindworkshop, final]{neurips_2025} and set \workshoptitle{The Second Workshop on GenAI for Health: Potential, Trust, and Policy Compliance}.
+
+(3) Publication Policy: After October 31, 2025, the full PDF of accepted papers will be publicly available on OpenReview by default. If authors wish to opt out of public availability, please contact the workshop organizers.
+
+------------------------------------------------------------------------------ 
+
 Following the successful first GenAI4Health workshop at NeurIPS 2024 (https://genai4health.github.io/), generative AI in healthcare has rapidly evolved from exploratory studies to real-world deployments. With increasing FDA involvement and expanding global regulatory frameworks, the second GenAI4Health workshop aims to bring together AI4Health practitioners, safety researchers, and policy experts to address critical challenges in developing robust and policy-compliant GenAI technologies for health.
 
 Generative AI has shown tremendous potential in revolutionizing healthcare delivery, from clinical diagnosis support and personalized treatment planning to synthetic biomedical data generation and AI-assisted surgical robotics. However, as these technologies move from research prototypes to clinical deployment, ensuring trustworthiness, safety, and regulatory compliance becomes paramount. This workshop provides a unique platform for interdisciplinary collaboration among AI researchers, healthcare professionals, policy makers, and regulatory experts to shape the future of responsible GenAI deployment in healthcare.

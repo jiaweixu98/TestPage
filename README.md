@@ -74,6 +74,29 @@ For questions about the workshop:
 
 For technical issues with the website, please open an issue on GitHub.
 
+## 🚀 Deployment
+
+The website works for both deployment locations:
+- **GitHub Pages**: https://genai4health.github.io/ 
+- **University of Texas**: https://aihealth.ischool.utexas.edu/GenAI4HealthNeurips2025/
+
+### Simple Deployment Steps
+
+1. **Build the site:**
+   ```bash
+   npm run build
+   ```
+
+2. **For GitHub Pages:**
+   ```bash
+   npm run deploy
+   ```
+
+3. **For University of Texas:**
+   - Upload the contents of the `build` folder to your server
+
+The site uses relative paths for assets, so it works in both root domains and subdirectories without any configuration changes needed.
+
 ## 📄 License
 
 This project is part of the NeurIPS 2025 workshop. All rights reserved. 

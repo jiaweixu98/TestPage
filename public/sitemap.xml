@@ -6,7 +6,7 @@
 
   <!-- Main GenAI4Health2025 page -->
   <url>
-    <loc>https://aihealth.ischool.utexas.edu/GenAI4HealthNeurips2025/</loc>
+    <loc>./</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -28,12 +28,6 @@
     <priority>0.9</priority>
   </url>
 
-  <!-- Main AIHealth Website -->
-  <url>
-    <loc>https://aihealth.ischool.utexas.edu/</loc>
-    <lastmod>2025-01-01T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+
 
 </urlset> 
