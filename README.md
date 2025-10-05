@@ -12,7 +12,7 @@ This is the official website for **The Second Workshop on GenAI for Health: Pote
 
 1. **Clone the repository**
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/jiaweixu98/genai4health2025neurips.git
    cd GenAI4Health2025
    ```
 
@@ -87,12 +87,7 @@ The website works for both deployment locations:
    npm run build
    ```
 
-2. **For GitHub Pages:**
-   ```bash
-   npm run deploy
-   ```
-
-3. **For University of Texas:**
+ **For University of Texas:**
    - Upload the contents of the `build` folder to your server
 
 The site uses relative paths for assets, so it works in both root domains and subdirectories without any configuration changes needed.
